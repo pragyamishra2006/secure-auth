@@ -1,0 +1,22 @@
+CREATE DATABASE IF NOT EXISTS auth_otp_db
+  CHARACTER SET utf8mb4
+  COLLATE utf8mb4_unicode_ci;
+
+USE auth_otp_db;
+
+CREATE TABLE IF NOT EXISTS users (
+  id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+  full_name VARCHAR(100) NOT NULL,
+  email VARCHAR(255) NOT NULL,
+  password_hash VARCHAR(255) NOT NULL,
+  is_verified BOOLEAN NOT NULL DEFAULT FALSE,
+  otp_hash CHAR(64) NULL,
+  otp_expires_at DATETIME NULL,
+  otp_attempts TINYINT UNSIGNED NOT NULL DEFAULT 0,
+  otp_last_sent_at DATETIME NULL,
+  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (id),
+  UNIQUE KEY uq_users_email (email),
+  INDEX idx_users_otp_expiry (otp_expires_at)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
