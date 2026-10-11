@@ -2,6 +2,8 @@
 
 A full-stack Login & Registration system with email OTP verification, account activation, secure password hashing, JWT authentication using an HttpOnly cookie, MySQL persistence, rate limiting, validation, and responsive React UI.
 
+
+
 ## Stack
 
 - Frontend: React + Vite
@@ -12,10 +14,14 @@ A full-stack Login & Registration system with email OTP verification, account ac
 - Email: Nodemailer / SMTP
 - Validation: express-validator
 - Rate limiting: express-rate-limit
+  
+
 
 ## Application flow
 
 Registration → Email OTP → OTP Verification → Account Activation → Login → Authenticated User → Logout
+
+
 
 ## Project structure
 
@@ -50,6 +56,7 @@ auth-otp-assessment/
 └── README.md
 ```
 
+
 ## 1. Database setup
 
 Create a MySQL database and run `backend/schema.sql`.
@@ -61,6 +68,7 @@ SOURCE backend/schema.sql;
 ```
 
 Or paste the SQL into MySQL Workbench.
+
 
 ## 2. Backend setup
 
@@ -93,6 +101,7 @@ SMTP_PASS=your_gmail_app_password
 SMTP_FROM="SecureAuth <your_email@gmail.com>"
 ```
 
+
 For Gmail, use a Google App Password rather than your normal Gmail password.
 
 Start:
@@ -101,7 +110,10 @@ Start:
 npm run dev
 ```
 
+
 Backend runs at `http://localhost:5000`.
+
+
 
 ## 3. Frontend setup
 
@@ -111,7 +123,10 @@ npm install
 npm run dev
 ```
 
+
 Frontend runs at `http://localhost:5173`.
+
+
 
 ## 4. Testing the complete flow
 
@@ -125,6 +140,8 @@ Frontend runs at `http://localhost:5173`.
 8. Refresh the page to verify the session persists.
 9. Logout and verify protected access is removed.
 10. Test wrong/expired OTP, password mismatch, duplicate email, invalid credentials, and resend limits.
+
+
 
 ## Security implemented
 
@@ -144,4 +161,3 @@ Frontend runs at `http://localhost:5173`.
 - CORS is restricted to the configured frontend origin.
 - Request body size is limited.
 - Validation is performed on the backend.
-
